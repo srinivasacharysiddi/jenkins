@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  config.vm.boot_timeout = 1200
   config.vm.define :jenkins do |jenkins_config|
     jenkins_config.vm.box = "centos/7"
     jenkins_config.vm.hostname = "jenkins-master"
@@ -20,6 +21,6 @@ Vagrant.configure("2") do |config|
     jenkinsslave_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
     end
-    jenkinsslave_config.vmprovision :shell, path: "bootstrap-jenkins-slave.sh"
+    jenkinsslave_config.vm.provision :shell, path: "bootstrap-jenkins-slave.sh"
   end
 end
