@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :jenkins do |jenkins_config|
     jenkins_config.vm.box = "centos/7"
     jenkins_config.vm.hostname = "jenkins-master"
-    jenkins_config.vm.network "forward_port", guest:80, host: 8080
+    jenkins_config.vm.network "forwarded_port", guest:80, host: 8080
     jenkins_config.vm.network "private_network", ip: "192.168.33.21"
     jenkins_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
